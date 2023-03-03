@@ -2,10 +2,10 @@ package com.gregory3mecki.rest.api.entity;
 
 import lombok.Data;
 
-//@Data
+@Data
 public class ErrorDTO {
 
-    private int code;
     private String message;
+    private String details;
 
 }
