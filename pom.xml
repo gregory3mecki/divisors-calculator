@@ -14,6 +14,7 @@
         <module>divisors-calculator-bom</module>
         <module>divisors-calculator-rest-api</module>
         <module>divisors-calculator-algorithm</module>
+        <module>divisors-calculator-mapper</module>
     </modules>
 
     <properties>
@@ -54,6 +55,11 @@
             </dependency>
             <dependency>
                 <groupId>com.gregory3mecki</groupId>
+                <artifactId>divisors-calculator-mapper</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gregory3mecki</groupId>
                 <artifactId>divisors-calculator-rest-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -66,9 +72,21 @@
     </dependencyManagement>
 
     <dependencies>
+<!--        <dependency>-->
+<!--            <groupId>io.quarkus</groupId>-->
+<!--            <artifactId>quarkus-resteasy-reactive-jackson</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-resteasy-reactive-jackson</artifactId>
+            <artifactId>quarkus-resteasy-reactive-jsonb</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-smallrye-openapi</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-smallrye-openapi</artifactId>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
