@@ -1,8 +1,8 @@
 package com.gregory3mecki.rest.control;
 
-import com.gregory3mecki.algorithm.DivisorsCounter;
-import com.gregory3mecki.mapper.MapperService;
-import com.gregory3mecki.mapper.data.Mapper;
+import com.gregory3mecki.core.algorithm.DivisorsCounter;
+import com.gregory3mecki.mapping.MappingService;
+import com.gregory3mecki.mapping.data.Mapping;
 
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
@@ -17,31 +17,31 @@ import java.util.stream.Collectors;
 public class CalculatorService {
 
     @Inject
-    MapperService mapperService;
+    MappingService mappingService;
     @Inject
     DivisorsCounter divisorsCounter;
 
-    public Map<Integer, Collection<String>> provideMappedDividers(final String mapperName, final Collection<Integer> numbers) {
-        final Mapper mapper = mapperService.provideMapper(mapperName);
+    public Map<Integer, Collection<String>> provideMappedDividers(final String mappingName, final Collection<Integer> numbers) {
+        final Mapping mapping = mappingService.provideMapping(mappingName);
         return numbers.stream()
                 .collect(
                         Collectors.toMap(
                                 Function.identity(),
-                                number -> provideMappedDivisorsForNumber(number, mapper),
+                                number -> provideMappedDivisorsForNumber(number, mapping),
                                 (val01, val02) -> val01,
                                 TreeMap::new
                         )
                 );
     }
 
-    private Collection<String> provideMappedDivisorsForNumber(final int number, final Mapper mapper) {
+    private Collection<String> provideMappedDivisorsForNumber(final int number, final Mapping mapping) {
         return divisorsCounter.count(number).stream()
-                .map(divisor -> mapDivisor(divisor, mapper))
+                .map(divisor -> mapDivisor(divisor, mapping))
                 .collect(Collectors.toList());
     }
 
-    private String mapDivisor(final int divisor, final Mapper mapper) {
-        final String mappedValue = mapper.getMapping().get(divisor);
+    private String mapDivisor(final int divisor, final Mapping mapping) {
+        final String mappedValue = mapping.getMappings().get(divisor);
         return Optional.ofNullable(mappedValue).orElseGet(() -> String.valueOf(divisor));
     }
 
