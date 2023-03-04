@@ -3,17 +3,16 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-<!--    <parent>-->
+    <parent>
         <groupId>com.gregory3mecki</groupId>
-<!--        <artifactId>divisors-calculator</artifactId>-->
+        <artifactId>divisors-calculator</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-<!--    </parent>-->
+    </parent>
 
     <artifactId>divisors-calculator-bom</artifactId>
     <packaging>pom</packaging>
 
     <properties>
-        <lombok.version>1.18.26</lombok.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -23,8 +22,33 @@
         <dependencies>
             <dependency>
                 <groupId>com.gregory3mecki</groupId>
+                <artifactId>divisors-calculator-core</artifactId>
+                <version>${divisors-calculator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gregory3mecki</groupId>
+                <artifactId>divisors-calculator-mapping</artifactId>
+                <version>${divisors-calculator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gregory3mecki</groupId>
+                <artifactId>divisors-calculator-rest</artifactId>
+                <version>${divisors-calculator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.gregory3mecki</groupId>
                 <artifactId>divisors-calculator-rest-api</artifactId>
-                <version>${project.version}</version>
+                <version>${divisors-calculator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${mapstruct.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.projectlombok</groupId>

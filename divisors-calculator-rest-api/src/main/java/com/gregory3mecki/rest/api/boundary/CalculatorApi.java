@@ -9,8 +9,8 @@ import java.util.List;
 public interface CalculatorApi {
 
     @GET
-    @Path("dividers/mappers/{name}")
+    @Path("dividers/mappings/{name}")
     @Produces(MediaType.APPLICATION_JSON)
-    Response provideMappedDividers(@PathParam("name") String mapperName, @QueryParam("number") List<String> numbers);
+    Response provideMappedDividers(@PathParam("name") String mappingName, @QueryParam("number") List<String> numbers);
 
 }

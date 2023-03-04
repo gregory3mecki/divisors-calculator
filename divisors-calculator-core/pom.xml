@@ -9,7 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>divisors-calculator-rest-api</artifactId>
+    <artifactId>divisors-calculator-core</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -31,8 +31,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
         </dependency>
     </dependencies>
 

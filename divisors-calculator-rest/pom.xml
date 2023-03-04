@@ -17,14 +17,26 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.gregory3mecki</groupId>
+                <artifactId>divisors-calculator-bom</artifactId>
+                <version>${divisors-calculator.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
         <dependency>
             <groupId>com.gregory3mecki</groupId>
-            <artifactId>divisors-calculator-algorithm</artifactId>
+            <artifactId>divisors-calculator-core</artifactId>
         </dependency>
         <dependency>
             <groupId>com.gregory3mecki</groupId>
-            <artifactId>divisors-calculator-mapper</artifactId>
+            <artifactId>divisors-calculator-mapping</artifactId>
         </dependency>
         <dependency>
             <groupId>com.gregory3mecki</groupId>
@@ -40,24 +52,5 @@
             </plugin>
         </plugins>
     </build>
-
-<!--    <build>-->
-<!--        <plugins>-->
-<!--            <plugin>-->
-<!--                <groupId>io.smallrye</groupId>-->
-<!--                <artifactId>jandex-maven-plugin</artifactId>-->
-<!--                <version>3.0.5</version>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>make-index</id>-->
-<!--                        <goals>-->
-<!--                            <goal>jandex</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
-<!--        </plugins>-->
-<!--    </build>-->
-
 
 </project>

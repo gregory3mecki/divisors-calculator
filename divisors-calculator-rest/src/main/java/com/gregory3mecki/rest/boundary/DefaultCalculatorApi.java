@@ -16,9 +16,9 @@ public class DefaultCalculatorApi implements CalculatorApi {
     CalculatorService calculatorService;
 
     @Override
-    public Response provideMappedDividers(final String mapperName, final List<String> numbers) {
+    public Response provideMappedDividers(final String mappingName, final List<String> numbers) {
         final Collection<Integer> numbersToProcess = prepareNumbers(numbers);
-        final Map<Integer, Collection<String>> result = calculatorService.provideMappedDividers(mapperName, numbersToProcess);
+        final Map<Integer, Collection<String>> result = calculatorService.provideMappedDividers(mappingName, numbersToProcess);
         return Response.ok(result).build();
     }
 
