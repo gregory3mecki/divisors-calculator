@@ -6,6 +6,7 @@ import javax.enterprise.context.ApplicationScoped;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Optional;
+import java.util.Set;
 
 @ApplicationScoped
 public class DefaultMappingService implements MappingService {
@@ -22,6 +23,9 @@ public class DefaultMappingService implements MappingService {
 
     @Override
     public void createMapping(final Mapping mapping) {
+        if (!hasUniqueNames(mapping)) {
+            throw new IllegalArgumentException("Mappings has duplicated words.");
+        }
         registeredMappings.add(mapping);
     }
 
@@ -29,6 +33,11 @@ public class DefaultMappingService implements MappingService {
     public void deleteMapping(final String name) {
         Optional.ofNullable(provideMapping(name))
                 .ifPresent(registeredMappings::remove);
+    }
+
+    private boolean hasUniqueNames(final Mapping mapping) {
+        final Collection<String> values = mapping.getMappings().values();
+        return values.size() == Set.copyOf(values).size();
     }
 
 }
