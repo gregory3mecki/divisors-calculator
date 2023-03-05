@@ -25,6 +25,7 @@ public class DefaultCalculatorService implements CalculatorService {
     public Map<Integer, Collection<String>> provideMappedDividers(final String mappingName, final Collection<Integer> numbers) {
         final Mapping mapping = mappingService.provideMapping(mappingName);
         return numbers.stream()
+                .peek(this::checkIsLessThanOrEqualToMaxValue)
                 .collect(
                         Collectors.toMap(
                                 Function.identity(),
@@ -33,6 +34,12 @@ public class DefaultCalculatorService implements CalculatorService {
                                 TreeMap::new
                         )
                 );
+    }
+
+    private void checkIsLessThanOrEqualToMaxValue(final int number) {
+        if (number > 20) {
+            throw new RuntimeException();
+        }
     }
 
     private Collection<String> provideMappedDivisorsForNumber(final int number, final Mapping mapping) {
