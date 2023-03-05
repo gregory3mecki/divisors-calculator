@@ -1,20 +1,20 @@
 package com.gregory3mecki.rest.control;
 
 import com.gregory3mecki.core.algorithm.DivisorsCounter;
+import com.gregory3mecki.core.util.exception.StatusCodeException;
 import com.gregory3mecki.mapping.MappingService;
 import com.gregory3mecki.mapping.data.Mapping;
 
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Optional;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Dependent
 public class DefaultCalculatorService implements CalculatorService {
+
+    private static final int INPUT_NUMBER_MAX_VALUE = 20;
 
     @Inject
     MappingService mappingService;
@@ -37,8 +37,12 @@ public class DefaultCalculatorService implements CalculatorService {
     }
 
     private void checkIsLessThanOrEqualToMaxValue(final int number) {
-        if (number > 20) {
-            throw new RuntimeException();
+        if (number > INPUT_NUMBER_MAX_VALUE) {
+            throw StatusCodeException.builder()
+                    .statusCode(406)
+                    .exceptionMessage(String.format("Number with value %d is invalid", number))
+                    .details(String.format("Number is greater than %d.", INPUT_NUMBER_MAX_VALUE))
+                    .build();
         }
     }
 

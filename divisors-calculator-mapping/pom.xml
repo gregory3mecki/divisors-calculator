@@ -32,6 +32,10 @@
     <dependencies>
         <dependency>
             <groupId>com.gregory3mecki</groupId>
+            <artifactId>divisors-calculator-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.gregory3mecki</groupId>
             <artifactId>divisors-calculator-rest-api</artifactId>
         </dependency>
         <dependency>
