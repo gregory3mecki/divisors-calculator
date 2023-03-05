@@ -1,6 +1,8 @@
 package com.gregory3mecki.rest.boundary;
 
+import com.gregory3mecki.core.util.rest.RestExceptionHandler;
 import com.gregory3mecki.rest.api.boundary.CalculatorApi;
+import com.gregory3mecki.rest.api.entity.ResponseDTO;
 import com.gregory3mecki.rest.control.CalculatorService;
 
 import javax.inject.Inject;
@@ -15,11 +17,16 @@ public class DefaultCalculatorApi implements CalculatorApi {
     @Inject
     CalculatorService calculatorService;
 
+    @RestExceptionHandler
     @Override
     public Response provideMappedDividers(final String mappingName, final List<String> numbers) {
         final Collection<Integer> numbersToProcess = prepareNumbers(numbers);
         final Map<Integer, Collection<String>> result = calculatorService.provideMappedDividers(mappingName, numbersToProcess);
-        return Response.ok(result).build();
+        final ResponseDTO response = new ResponseDTO();
+        response.setData(result);
+        return Response
+                .ok(response)
+                .build();
     }
 
     private Collection<Integer> prepareNumbers(final Collection<String> numbers) {
