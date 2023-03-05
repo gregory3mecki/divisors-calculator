@@ -9,7 +9,7 @@ import static org.hamcrest.CoreMatchers.is;
 @QuarkusTest
 class DefaultCalculatorApiTest {
 
-    private static final String result = "{\"4\":[\"testValue01\",\"testValue02\",\"testValue04\"]}";
+    private static final String result = "{\"data\":{\"4\":[\"testValue01\",\"testValue02\",\"testValue04\"]}}";
 
     @Test
     void checkCalculatorReturnsCorrectDivisorsForSimpleCase() {
