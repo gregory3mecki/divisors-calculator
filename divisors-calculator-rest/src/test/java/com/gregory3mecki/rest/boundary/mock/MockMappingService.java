@@ -16,20 +16,6 @@ public class MockMappingService implements MappingService {
     @Inject
     DefaultMappingService defaultMappingService;
 
-    void startup(@Observes final StartupEvent event) {
-        final Mapping mapping = new Mapping();
-        mapping.setName("test-mapping");
-        mapping.setMappings(
-                Map.of(
-                        1, "testValue01",
-                        2, "testValue02",
-                        3, "testValue03",
-                        4, "testValue04"
-                )
-        );
-        defaultMappingService.createMapping(mapping);
-    }
-
     @Override
     public Mapping provideMapping(final String name) {
         return defaultMappingService.provideMapping(name);
@@ -43,6 +29,20 @@ public class MockMappingService implements MappingService {
     @Override
     public void deleteMapping(final String name) {
         defaultMappingService.deleteMapping(name);
+    }
+
+    void startup(@Observes final StartupEvent event) {
+        final Mapping mapping = new Mapping();
+        mapping.setName("test-mapping");
+        mapping.setMappings(
+                Map.of(
+                        1, "testValue01",
+                        2, "testValue02",
+                        3, "testValue03",
+                        4, "testValue04"
+                )
+        );
+        defaultMappingService.createMapping(mapping);
     }
 
 }
