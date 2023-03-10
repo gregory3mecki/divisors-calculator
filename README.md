@@ -63,7 +63,7 @@ Count divisors for input numbers 8 and 20 mapped with words from mapping `mappin
 
 ```
 curl --request GET \
-  --url 'http://localhost:8080/calculator-api/dividers/mappings/name01?number=8&number=20'
+  --url 'http://localhost:8080/calculator-api/dividers/mappings/mapping1?number=8&number=20'
 ```
 
 ### Mappings manipulation
