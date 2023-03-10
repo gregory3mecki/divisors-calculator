@@ -21,6 +21,10 @@ The application is based on the technologies listed below:
 ## Modules
 The project has been divided into the following modules.
 
+### [divisors-calculator-application](divisors-calculator-application)
+
+This module has base application configuration- quarkus dev, health check logic etc.
+
 ### [divisors-calculator-bom](divisors-calculator-bom)
 
 Contains POM file with dependencies for all modules. 
@@ -46,12 +50,14 @@ Module contains REST API interfaces.
 Run application in dev mode that enables live coding using:
 ```shell script
 ./mvnw clean install -DskipTests
-./mvnw compile quarkus:dev -pl divisors-calculator-rest
+./mvnw compile quarkus:dev -pl divisors-calculator-application
 ```
 
 Application is going to be available under http://localhost:8080.
 
-Swagger documentation is available under http://localhost:8080/q/swagger-ui. 
+Swagger documentation is available under http://localhost:8080/q/swagger-ui.
+
+Health check is available here http://localhost:8080/q/health.
 
 ## Example requests
 
