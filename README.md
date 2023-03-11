@@ -6,7 +6,7 @@ It is written based on the RESTful model.
 Additional tasks:
 - It is initialized with 10 generated mappings.
 - Words in each mapping are unique.
-- The input numbers must be in the range [1-20].
+- The input numbers must be in the range [0-20].
 - It is possible to add and remove mappings.
 
 ## Tech stack
